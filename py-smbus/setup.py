@@ -4,17 +4,19 @@
 from setuptools import setup, Extension
 from setuptools.command.build_ext import build_ext
 import subprocess
+import os
 
 class BuildI2CLibrary(build_ext):
     """Customized install to run library Makefile"""
     def run(self):
         print("building 'i2c' library")
+        os.environ['CFLAGS'] = '-fPIC'
         proc = subprocess.Popen(["make"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         print(proc.stderr.read())
         build_ext.run(self)
 
 setup(	name="smbus",
-	version="1.1.post1",
+	version="1.1.post2",
 	description="Python bindings for Linux SMBus access through i2c-dev",
 	author="Mark M. Hoffman",
 	author_email="mhoffman@lightlink.com",

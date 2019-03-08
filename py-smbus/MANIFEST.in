@@ -52,7 +52,6 @@ include eepromer/Makefile
 include eepromer/eeprom.8
 include eepromer/README
 include eepromer/eepromer.8
-include include/i2c
 include include/i2c/smbus.h
 include include/Module.mk
 include setup.py
